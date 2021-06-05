@@ -1,23 +1,58 @@
 <template>
   <v-container>
-    <div style="position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);">
-
+    <div
+      style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      "
+    >
       <v-card :loading="loading" class="mx-auto my-12" style="width:500px;">
-        <h1 style="font-family: Verdana">Login</h1>
+        <v-tabs
+          v-model="tab"
+          background-color="indigo lighten-1"
+          centered
+          dark
+          icons-and-text
+        >
+          <v-tabs-slider></v-tabs-slider>
 
-        <v-divider class="mx-4"></v-divider>
+          <v-tab style="font-family: Verdana" href="#tab-1">
+            Login
+            <v-icon>mdi-login</v-icon>
+          </v-tab>
 
-        <v-card-title>Username</v-card-title>
+          <v-tab style="font-family: Verdana" href="#tab-2">
+            Register
+            <v-icon>mdi-account-plus</v-icon>
+          </v-tab>
+        </v-tabs>
 
+        <v-tabs-items v-model="tab">
+          <v-tab-item v-for="i in 3" :key="i" :value="'tab-' + i">
+            <v-card flat>
+              <v-card-text>{{ text }}</v-card-text>
+            </v-card>
+          </v-tab-item>
+        </v-tabs-items>
+        <center>
+        <v-card-title style="text-align:center !important;">Username</v-card-title>
+        <v-text-field style="width:400px;"></v-text-field>
         <v-card-title>Password</v-card-title>
-
+        <v-text-field style="width:400px;"></v-text-field>
+        </center>
         <v-card-actions>
-          <v-btn color="deep-purple lighten-2" text @click="reserve">
-            Reserve
-          </v-btn>
+          <v-row justify="end">
+            <v-btn
+              class="mx-5"
+              fab
+              dark
+              color="indigo lighten-1"
+              @click="submit">
+              <v-icon>mdi-chevron-right</v-icon>
+            </v-btn>
+          </v-row>
         </v-card-actions>
       </v-card>
     </div>
