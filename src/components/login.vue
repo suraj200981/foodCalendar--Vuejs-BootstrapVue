@@ -8,7 +8,7 @@
         transform: translate(-50%, -50%);
       "
     >
-      <v-card :loading="loading" class="mx-auto my-12" style="width:500px;">
+      <v-card :loading="loading" class="mx-auto my-12" style="width: 500px">
         <v-tabs
           v-model="tab"
           background-color="indigo lighten-1"
@@ -29,31 +29,24 @@
           </v-tab>
         </v-tabs>
 
-        <v-tabs-items v-model="tab">
-          <v-tab-item v-for="i in 3" :key="i" :value="'tab-' + i">
-            <v-card flat>
-              <v-card-text>{{ text }}</v-card-text>
-            </v-card>
-          </v-tab-item>
-        </v-tabs-items>
         <center>
-        <v-card-title style="text-align:center !important;">Username</v-card-title>
-        <v-text-field style="width:400px;"></v-text-field>
-        <v-card-title>Password</v-card-title>
-        <v-text-field style="width:400px;"></v-text-field>
+          <v-card-title>Username</v-card-title>
+          <v-text-field v-model="userName" style="width: 400px"></v-text-field>
+          <v-card-title>Password</v-card-title>
+          <v-text-field v-model="password" type="password" style="width: 400px"></v-text-field>
         </center>
-        <v-card-actions>
-          <v-row justify="end">
-            <v-btn
-              class="mx-5"
-              fab
-              dark
-              color="indigo lighten-1"
-              @click="submit">
-              <v-icon>mdi-chevron-right</v-icon>
-            </v-btn>
-          </v-row>
-        </v-card-actions>
+
+        <v-row justify="end">
+          <v-btn
+            class="mx-5"
+            fab
+            dark
+            color="indigo lighten-1"
+            @click="submit()"
+          >
+            <v-icon>mdi-chevron-right</v-icon>
+          </v-btn>
+        </v-row>
       </v-card>
     </div>
   </v-container>
@@ -62,7 +55,21 @@
 <script>
 export default {
   name: "login",
-  props: {},
+
+  data: () => ({
+    userName: "",
+    password: "",
+  }),
+
+  methods: {
+    submit() {
+      if ((this.userName === "p") && (this.password === "s")) {
+        console.log("success");
+      } else {
+        console.log("errosdr");
+      }
+    },
+  },
 };
 </script>
 
@@ -81,5 +88,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.v-text-field {
+  font-size: 30px !important;
 }
 </style>
