@@ -1,23 +1,33 @@
 <template>
-  <v-app>
-    <v-main>
-      <login/>
-    </v-main>
-  </v-app>
+  <div id="app">
+    <div id="nav">
+      <router-link to="/">Hoome</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/calendar">Calendar</router-link>
+    </div>
+    <router-view />
+  </div>
 </template>
 
-<script>
-import login from './components/login.vue';
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-export default {
-  name: 'App',
+#nav {
+  padding: 30px;
 
-  components: {
-    login,
-  },
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-  data: () => ({
-    //
-  }),
-};
-</script>
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+</style>
